@@ -18,6 +18,8 @@ before_install:
   - nvm use $NODE_NVM_VERSION
   - node --version
   - npm --version
+  # put node-pre-gyp on path (only needed on OS X)
+  - export PATH=./node_modules/.bin/:$PATH
 
 install:
   - if [[ ${TARGET} == 'SHARED' ]] && [[ "$(uname -s)" == 'Linux' ]]; then sudo apt-get -qq update; sudo apt-get -qq install libgdal1-dev; fi;
